@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+    <style>
+        button{
+        color: #808080;
+        background-color: #454545;
+        margin: 2px;  
+        width: 20px;
+        height: 20px;
+        text-align: center;
+        border: 0px solid black;
+        border-radius: 25%;
+
+        }
+        #visor{
+            font-family: 'Courier New', Courier, monospace;
+            font-size: small;
+            background-color: #e8e8e8;
+            color: #808080;
+			height: 15px;
+            width: 90px;
+			padding: 2px;
+			border: 1px solid black;
+			border-radius: 5px;
+			margin: 2px;
+			
+        }
+        #calculadora{
+		
+            background-color: aquamarine;
+            max-width: 100px;
+            max-height: 180px;
+			padding: 2px;
+            overflow: hidden;
+			border-radius: 5px;
+        }
+        #numpad{
+
+
+        }
+    </style>
+<script>
+    var n;
+    var sinal='';
+function escrever(s){
+    if (s=='C') {
+        document.getElementById('visor').innerHTML=' ';
+    } else if (s=='+' || s=='-'  || s=='*' || s=='/' ) {
+        if (document.getElementById('visor').innerHTML=='') {
+            n=0;
+        } else {
+            n=parseInt(document.getElementById('visor').innerHTML);
+        }
+        
+
+        document.getElementById('visor').innerHTML=' ';
+        sinal=s;
+    }else if (s=='=') {
+        var b=parseInt(document.getElementById('visor').innerHTML);
+        document.getElementById('visor').innerHTML=eval(n+sinal+b);
+    }else{document.getElementById('visor').innerHTML+=s;
+        
+    }
+
+
+}
+
+</script>
+</head>
+<body>
+    <div id="calculadora">
+    <div id="visor">0</div>
+    <div id="numpad">
+        <button onclick="escrever(1);">1</button><button onclick="escrever(2);">2</button><button onclick="escrever(3);">3</button><button onclick="escrever('C');">C</button><br>
+        <button onclick="escrever(4);">4</button><button onclick="escrever(5);">5</button><button onclick="escrever(6);">6</button><button onclick="escrever('+');">+</button><br>
+        <button onclick="escrever(7);">7</button><button onclick="escrever(8);">8</button><button onclick="escrever(9);">9</button><button onclick="escrever('-');">-</button><br>
+        <button onclick="escrever(0);">0</button><button onclick="escrever('=');">=</button><button onclick="escrever('*');">*</button><button onclick="escrever('/');">/</button>
+
+    </div>
+   
+    </div>
+</body>
+</html>
